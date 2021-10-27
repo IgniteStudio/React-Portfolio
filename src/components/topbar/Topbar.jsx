@@ -1,16 +1,32 @@
-import './topbar.scss';
+import "./topbar.scss";
+import { Person, Mail } from "@mui/icons-material/";
 
-export default function topbar() {
-    return (
-        <div className="topbar" id="topbar">
-            <div className="wrapper">
-                <div className="left">
-                    <a href="#intro">sfsdfsdf</a>
-                </div>
-                <div className="right">
-
-                </div>
-            </div>
+export default function Topbar({menuOpen, setMenuOpen}) {
+  return (
+    <div className={"topbar " + (menuOpen && "active")}>
+      <div className="wrapper">
+        <div className="left">
+          <a href="#intro" className="logo">
+            <span className="d">d</span>AVID.
+          </a>
+          <div className="itemContainer">
+            <Person className="icon" />
+            <span>+1 416 917 6604</span>
+          </div>
+          <div className="itemContainer">
+            <Mail className="icon"/>
+            <span>davidagaybi@gmail.com</span>
+          </div>
         </div>
-    )
+        <div className="right">
+          <div className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
+            <span className="line1"></span>
+            <span className="line2"></span>
+            <span className="line3"></span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  );
 }
