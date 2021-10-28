@@ -1,13 +1,25 @@
 import "./topbar.scss";
 import { Person, Mail } from "@mui/icons-material/";
+import { init } from "ityped";
+import { useEffect, useRef } from "react";
 
 export default function Topbar({menuOpen, setMenuOpen}) {
+  const textRef = useRef();
+
+  useEffect(() => {
+    init(textRef.current, {
+      showCursor: false,
+      strings: ["AV:ID."],
+      typeSpeed: 400,
+    });
+  }, []);
+
   return (
     <div className={"topbar " + (menuOpen && "active")}>
       <div className="wrapper">
         <div className="left">
           <a href="#intro" className="logo">
-            <span className="d">d</span>AVID.
+            <span className="d">d</span><span className="avid" ref={textRef}></span>
           </a>
           <div className="itemContainer">
             <Person className="icon" />

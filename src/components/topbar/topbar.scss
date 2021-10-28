@@ -7,7 +7,7 @@
   height: 70px;
   position: fixed;
   top: 0;
-  z-index: 2; // gives it focus so it stays fixed
+  z-index: 3; // gives it focus so it stays fixed
   transition: all 1.5s ease;
 
   .wrapper {
@@ -25,12 +25,17 @@
         text-decoration: none;
         color: inherit; // inherits color from up closest parent
         margin-right: 40px;
-        font-family: "Aquire", sans-serif;
+        
 
         .d {
           color: #d4af06;
           font-size: 35px;
-          text-shadow: 2px 2px #833603;
+          text-shadow: 3px 3px #9e3504;
+        }
+        .avid {
+          font-family: "Aquire", sans-serif;
+          margin-left: 20px;
+          letter-spacing: 3px;
         }
       }
       .itemContainer {
