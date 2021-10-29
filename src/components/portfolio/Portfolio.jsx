@@ -1,23 +1,83 @@
+import { useState, useEffect } from "react";
+import PortfolioList from "../portfolioList/PortfolioList";
 import "./portfolio.scss";
+import {
+  featuredPortfolio,
+  webPortfolio,
+  mobilePortfolio,
+  designPortfolio,
+  contentPortfolio,
+} from "../../data";
 
 export default function Portfolio() {
+  const [selected, setSelected] = useState("featured");
+  const [data, setData] = useState([]);
+
+  const list = [
+    {
+      id: "featured",
+      title: "Featured",
+    },
+    {
+      id: "web",
+      title: "Web App",
+    },
+    {
+      id: "mobile",
+      title: "Mobile App",
+    },
+    {
+      id: "design",
+      title: "Design",
+    },
+    {
+      id: "content",
+      title: "Content",
+    },
+  ];
+
+  useEffect(() => {
+    switch (selected) {
+      case "featured":
+        setData(featuredPortfolio);
+        break;
+      case "web":
+        setData(webPortfolio);
+        break;
+      case "mobile":
+        setData(mobilePortfolio);
+        break;
+      case "design":
+        setData(designPortfolio);
+        break;
+      case "content":
+        setData(contentPortfolio);
+        break;
+      default:
+        setData(featuredPortfolio);
+        break;
+    }
+  }, [selected]); // dependency
   return (
     <div className="portfolio" id="portfolio">
       <h1>Portfolio</h1>
       <ul>
-        <li className="active">Featured</li>
-        <li>Web App</li>
-        <li>Mobile App</li>
-        <li>Design</li>
-        <li>Branding</li>
+        {list.map((item) => (
+          <PortfolioList
+            title={item.title}
+            active={selected === item.id}
+            setSelected={setSelected}
+            id={item.id}
+          />
+        ))}
       </ul>
       <div className="container">
-        <div className="item">
-          <img
-            src="https://camo.githubusercontent.com/e0a63b7f676cc1f2b85181b8bdf56a17fe2e9612e739d836d7b8df400bbd51c2/68747470733a2f2f662e636c6f75642e6769746875622e636f6d2f6173736574732f313931383438312f3131313638392f35383864613535382d366166662d313165322d386331332d3363323661386161313136652e706e67"
-            alt="starry night"
-          />
-        </div>
+        {data.map((d) => (
+          <div className="item">
+            <img src={d.img} alt="portfolio image item" />
+            <h3>{d.title}</h3>
+          </div>
+        ))}
       </div>
     </div>
   );

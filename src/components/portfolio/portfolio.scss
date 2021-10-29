@@ -1,42 +1,74 @@
-@import '../../global.scss';
-
+@import "../../global.scss";
 
 .portfolio {
-    background-color: white;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h1 {
+    font-size: 50px;
+  }
+
+  ul {
+    margin: 10px;
+    padding: 0;
+    list-style: none;
     display: flex;
-    flex-direction: column;
+
+    li {
+      font-size: 14px;
+      margin-right: 50px;
+      padding: 7px;
+      border-radius: 10px;
+      cursor: pointer;
+
+      &.active {
+        background-color: $mainColor;
+        color: white;
+      }
+    }
+  }
+
+  .container {
+    width: 70%;
+    display: flex;
     align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
 
-    h1{
-        font-size: 50px;
-    }
+    .item {
+      width: 220px;
+      height: 150px;
+      border-radius: 10px;
+      border: 1px solid white;
+      margin: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      position: relative;
+      transition: all .5s ease;
+      cursor: pointer;
 
-    ul{
-        margin: 10px;
-        padding: 0;
-        list-style: none;
-        display: flex;
+      h3 {
+        position: absolute;
+        font-size: 20px;
+      }
 
-        li {
-            font-size: 12px;
-            margin-right: 50px;
-            padding: 0.7;
-
-            &.active{
-                background-color: $mainColor;
-                color: white;
-            }
+      img {
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+      }
+      &:hover {
+        background-color: $mainColor;
+        border-radius: 50px;
+        img {
+          opacity: 0.5;
+          z-index: 0;
         }
+      }
     }
-
-    .container {
-
-        .item {
-            img {
-
-            }
-
-        }
-
-    }
+  }
 }
